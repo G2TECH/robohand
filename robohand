@@ -1,0 +1,236 @@
+
+
+#include <Servo.h>
+
+Servo m1;
+Servo m2;
+Servo m3;
+Servo m4;
+Servo m5;
+int pos = 0;    
+
+void setup() {
+  m1.attach(8); 
+  m2.attach(7);
+  m3.attach(6);
+  m4.attach(5);
+  m5.attach(4);
+  Serial.begin(9600);
+ 
+}
+
+void loop() {
+  nor(); 
+    Serial.println("BEGIN...");
+    
+if (Serial.available())
+{
+  int z=Serial.read();
+  if(z==1)
+ {
+  thumb();
+ }
+ if(z==2)
+ {
+  index();
+ }
+ if(z==3)
+ {
+  middle();
+ }
+   if(z==4)
+ {
+  ring();
+ }
+ if(z==5)
+ {
+  little();
+ }
+ if(z==6)
+ {
+  t();
+  l1();
+  r();
+  m();
+  i();
+  delay(1000);
+  norm();
+ }
+ if(z==7)
+{
+ i();
+ t();
+
+  norm();
+ }
+ if(z==8)
+ {
+  t();
+  r();
+  l1();
+  delay(1000);
+  norm();
+}
+if(z==9)
+{
+  t();
+  delay(1000);
+  norm();
+}
+if(z==10)
+{
+  norm();
+}
+}
+}
+ void little()
+ {
+   for (pos = 0; pos <= 180; pos += 10) {
+    Serial.println(pos);
+    m5.write(pos);
+    delay(15); 
+   }
+   for (pos = 180; pos >= 0; pos -=10 ) { // goes from 180 degrees to 0 degrees
+    m5.write(pos);
+    delay(15);  
+ }}
+void ring()
+ {
+   for (pos = 0; pos <= 180; pos += 10) {
+    Serial.println(pos);
+    m3.write(pos);
+    delay(15); 
+   }
+   for (pos = 180; pos >= 0; pos -= 10) { // goes from 180 degrees to 0 degrees
+    m3.write(pos);
+    delay(15);  
+ }}
+ void middle()
+  {
+   for (pos = 0; pos <= 180; pos += 10) {
+    Serial.println(pos);
+    m4.write(pos);
+    delay(15); 
+   }
+   for (pos = 180; pos >= 0; pos -= 10) { // goes from 180 degrees to 0 degrees
+    m4.write(pos);
+    delay(15);  
+ }
+ }
+void thumb()
+ {
+   for (pos = 0; pos <= 180; pos += 10) {
+    Serial.println(pos);
+    m2.write(pos);
+    delay(15); 
+   }
+   for (pos = 180; pos >= 
+   0; pos -= 10) { // goes from 180 degrees to 0 degrees
+    m2.write(pos);
+    delay(15);  
+ }}
+ void index()
+  {for (pos = 180; pos >= 0; pos -= 10) { // goes from 180 degrees to 0 degrees
+    m1.write(pos);
+    delay(15); 
+   
+   }
+  for (pos = 0; pos <=180; pos += 10) {
+    Serial.println(pos);
+    m1.write(pos);
+    delay(15);   
+ }
+ }
+ void l1()
+ {
+  for (pos = 180; pos >= 0; pos -= 10) { // goes from 180 degrees to 0 degrees
+    m5.write(pos);
+    delay(15);  
+ }}
+void r()
+ {
+   
+   for (pos = 180; pos >=0; pos -= 10) { // goes from 180 degrees to 0 degrees
+    m3.write(pos);
+    delay(15);  
+ }}
+ void m()
+  {
+   
+   for (pos = 180; pos >= 0; pos -= 10) { // goes from 180 degrees to 0 degrees
+    m4.write(pos);
+    delay(15);  
+ }
+ }
+void t()
+ {
+  
+   for (pos = 180; pos >= 0; pos -= 10) { // goes from 180 degrees to 0 degrees
+    m2.write(pos);
+    delay(15);  
+ }}
+ void i()
+  {
+  for (pos = 0; pos <=180; pos += 10) {
+    Serial.println(pos);
+    m1.write(pos);
+    delay(15);   
+ }
+}
+void li()
+ {
+   for (pos = 0; pos <= 180; pos += 10) {
+    Serial.println(pos);
+    m5.write(pos);
+    delay(15); 
+   }
+   }
+void ri()
+ {
+   for (pos = 0; pos <= 180; pos += 10) {
+    Serial.println(pos);
+    m3.write(pos);
+    delay(15); 
+   }
+   }
+ void mi()
+  {
+   for (pos = 0; pos <= 180; pos += 10) {
+    Serial.println(pos);
+    m4.write(pos);
+    delay(15); 
+   }
+  
+ }
+void th()
+ {
+   for (pos = 0; pos <= 180; pos += 10) {
+    Serial.println(pos);
+    m2.write(pos);
+    delay(15); 
+   }
+   }
+ void in()
+  {for (pos = 180; pos >= 0; pos -= 10) { // goes from 180 degrees to 0 degrees
+    m1.write(pos);
+    delay(15); 
+   
+   }
+ 
+ }
+ void norm()
+ {
+  ri();
+  mi();
+  th();
+  in();
+ }
+ void nor()
+ {
+  m1.write(180); 
+  m2.write(0);
+  m3.write(0);
+  m4.write(0);
+  m5.write(0);
+  
+ }
